@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="WattMetrica is a free electricity cost calculator. Estimate daily, monthly and yearly energy consumption and costs.">
+  <meta name="theme-color" content="#0b1930">
+  <title>WattMetrica | Electricity Cost Calculator</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+<script src="supabase-config.js" defer></script>
+<script src="account.js" defer></script>
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a class="brand" href="#home" aria-label="WattMetrica home">
+        <span class="brand-symbol">ϟ</span>
+        <span>Watt<span class="accent">Metrica</span></span>
+      </a>
+      <nav aria-label="Main navigation">
+        <a href="#calculator">Calculator</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#about">About</a>
+      </nav>
+      <div class="nav-actions">
+        <button id="themeToggle" class="theme-button" type="button" aria-label="Toggle dark mode">☾</button>
+        <a href="auth.html" id="accountLink" class="account-button">
+  Log In
+</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <span class="eyebrow">FREE ELECTRICITY CALCULATOR</span>
+          <h1>Understand your <span>energy costs.</span></h1>
+          <p>Discover how much electricity your appliances consume and what they really cost. Make smarter energy decisions in seconds.</p>
+          <div class="hero-benefits">
+            <span>✓ Instant calculations</span>
+            <span>✓ Multiple currencies</span>
+            <span>✓ No account required</span>
+          </div>
+          <a class="hero-link" href="#calculator">Start calculating ↓</a>
+        </div>
+        <div class="hero-visual" aria-hidden="true">
+          <div class="visual-icon">ϟ</div>
+          <div class="visual-title">Energy made simple.</div>
+          <div class="visual-bars">
+            <span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+            <span></span>
+          </div>
+          <div class="visual-caption">Measure. Understand. Save.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="calculator-section" id="calculator">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow green">SMART ENERGY TOOLS</span>
+          <h2>Electricity Cost Calculator</h2>
+          <p>Enter your appliance details and see your estimated costs instantly.</p>
+        </div>
+
+        <div class="calculator-layout">
+          <div class="panel">
+            <div class="panel-title">
+              <span class="panel-icon">⚡</span>
+              <div>
+                <h3>Appliance details</h3>
+                <p>Adjust the values below</p>
+              </div>
+            </div>
+
+            <div class="fields">
+              <div class="field">
+                <label for="power">Power consumption (W)</label>
+                <input id="power" type="number" value="1500" min="0" step="any">
+              </div>
+              <div class="field">
+                <label for="hours">Usage hours per day</label>
+                <input id="hours" type="number" value="4" min="0" max="24" step="any">
+              </div>
+              <div class="field">
+                <label for="price">Electricity price / kWh</label>
+                <input id="price" type="number" value="0.20" min="0" step="any">
+              </div>
+              <div class="field">
+                <label for="currency">Currency</label>
+                <select id="currency">
+                  <option value="USD">USD ($)</option>
+                  <option value="EUR">EUR (€)</option>
+                  <option value="GBP">GBP (£)</option>
+                  <option value="CZK">CZK (Kč)</option>
+                </select>
+              </div>
+            </div>
+
+            <p id="error" class="error" role="alert" hidden></p>
+            <button id="resetButton" class="reset-button" type="button">↺ Reset values</button>
+          </div>
+
+          <div class="panel results-panel">
+            <div class="panel-title">
+              <span class="panel-icon">▥</span>
+              <div>
+                <h3>Your energy estimate</h3>
+                <p>Updated automatically</p>
+              </div>
+            </div>
+
+            <div class="primary-result">
+              <span>Estimated yearly cost</span>
+              <strong id="yearlyCost">$438.00</strong>
+              <small>Based on 365 days of usage</small>
+            </div>
+
+            <div class="result-row">
+              <div>
+                <span>Daily cost</span>
+                <strong id="dailyCost">$1.20</strong>
+              </div>
+              <div>
+                <span>Monthly cost</span>
+                <strong id="monthlyCost">$36.00</strong>
+              </div>
+            </div>
+
+            <div class="consumption-row">
+              <span>Daily consumption</span>
+              <strong id="dailyKwh">6.00 kWh</strong>
+            </div>
+            <p class="fine-print">Monthly estimates use 30 days. Currency selection does not convert exchange rates.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="features" id="how-it-works">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow green">SIMPLE & TRANSPARENT</span>
+          <h2>How WattMetrica works</h2>
+          <p>Three simple steps to understand electricity expenses.</p>
+        </div>
+        <div class="feature-grid">
+          <article class="feature">
+            <span class="feature-icon">01</span>
+            <h3>Enter appliance power</h3>
+            <p>Find the power rating in watts on your appliance label.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-icon">02</span>
+            <h3>Set usage and price</h3>
+            <p>Enter daily operating hours and your electricity price per kWh.</p>
+          </article>
+          <article class="feature">
+            <span class="feature-icon">03</span>
+            <h3>See your results</h3>
+            <p>Get daily, monthly and yearly estimates instantly.</p>
+          </article>
+        </div>
+        <div class="formula">
+          <strong>Calculation formula</strong>
+          <p>Daily cost = (Power in watts × Hours per day ÷ 1000) × Price per kWh</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container about-inner">
+        <div>
+          <span class="eyebrow">ABOUT WATTMETRICA</span>
+          <h2>Better energy decisions start with better information.</h2>
+          <p>WattMetrica provides straightforward tools for estimating electricity consumption and costs. More tools are planned for future releases.</p>
+        </div>
+        <div class="about-mark">ϟ</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div>
+        <strong>ϟ WattMetrica</strong>
+        <p>Free tools for smarter energy decisions.</p>
+      </div>
+      <span>© <span id="year"></span> WattMetrica.eu</span>
+    </div>
+  </footer>
+</body>
+</html>

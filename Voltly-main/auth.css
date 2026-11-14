@@ -1,0 +1,169 @@
+
+/* WattMetrica - Authentication Page */
+
+.auth-main {
+    min-height: calc(100vh - 78px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 55px 20px;
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(16, 185, 129, 0.10),
+            transparent 35%
+        ),
+        #f4f7fb;
+}
+
+.auth-card {
+    width: 100%;
+    max-width: 440px;
+    background: #ffffff;
+    border: 1px solid #dce5ee;
+    border-radius: 20px;
+    padding: 40px;
+    box-shadow: 0 20px 60px rgba(15, 33, 57, 0.10);
+}
+
+.auth-heading {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.auth-icon {
+    width: 58px;
+    height: 58px;
+    margin: 0 auto 20px;
+    display: grid;
+    place-items: center;
+    background: #dff8ee;
+    color: #059669;
+    border-radius: 16px;
+    font-size: 30px;
+}
+
+.auth-heading h1 {
+    font-size: 29px;
+    letter-spacing: -0.7px;
+    color: #17263e;
+    margin: 0 0 8px;
+}
+
+.auth-heading p {
+    color: #64748b;
+    font-size: 14px;
+    margin: 0;
+}
+
+.auth-field {
+    margin-bottom: 20px;
+}
+
+.auth-field label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 13px;
+    font-weight: 700;
+    color: #17263e;
+}
+
+.auth-field input {
+    width: 100%;
+    height: 50px;
+    border: 1px solid #dce5ee;
+    border-radius: 10px;
+    padding: 0 14px;
+    background: white;
+    color: #17263e;
+    font-size: 15px;
+}
+
+.auth-field input:focus {
+    outline: 3px solid rgba(16, 185, 129, 0.15);
+    border-color: #10b981;
+}
+
+.auth-submit {
+    width: 100%;
+    height: 50px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 10px;
+    background: #10b981;
+    color: #062c22;
+    font-weight: 800;
+    font-size: 15px;
+    transition: background 0.2s;
+}
+
+.auth-submit:hover {
+    background: #34d399;
+}
+
+.auth-submit:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
+.auth-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+}
+
+.auth-links button {
+    background: none;
+    border: none;
+    color: #047857;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.auth-links button:hover {
+    text-decoration: underline;
+}
+
+.auth-message {
+    padding: 13px;
+    border-radius: 9px;
+    font-size: 13px;
+    margin: 15px 0;
+}
+
+.auth-message.success {
+    background: #dcfce7;
+    color: #166534;
+}
+
+.auth-message.error {
+    background: #fee2e2;
+    color: #991b1b;
+}
+
+.back-link {
+    color: #cbd5e1;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.back-link:hover {
+    color: #6ee7b7;
+}
+
+@media (max-width: 500px) {
+    .auth-main {
+        padding: 30px 15px;
+    }
+
+    .auth-card {
+        padding: 28px 22px;
+        border-radius: 16px;
+    }
+
+    .auth-heading h1 {
+        font-size: 25px;
+    }
+}
